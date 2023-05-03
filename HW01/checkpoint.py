@@ -57,10 +57,28 @@ def binario_numero(binario:int):
         return numero
     
 def decimal_binario(decimal:float):
+    r"""
+    Esta función recibe como parámetro un numero decimal base 10 y retorna su representación
+    en el sistema binario
     """
-    
-    """
-
     _integer, decimal = divmod(decimal, 1)
-    binario_integer = numero_binario(_integer)
-    
+    binario_integer = numero_binario(int(_integer))
+    binario_decimal = list()
+
+    def _decimal_binario(decimal:float):
+        
+        decimal *= 2
+
+        _integer, decimal = divmod(decimal, 1)
+
+        binario_decimal.append(str(int(_integer)))
+
+        if decimal == 0:
+
+            return "".join(binario_decimal)
+        
+        return _decimal_binario(decimal)
+        
+    binario_decimal = _decimal_binario(decimal)
+
+    return str(binario_integer) + "." + binario_decimal

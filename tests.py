@@ -33,6 +33,41 @@ class HenryHomeworks(unittest.TestCase):
       valor_esperado = 256
       self.assertEqual(valor_test, valor_esperado)
 
+    def test_decimal_binario_01(self):
+      valor_test = ch.decimal_binario(0.3125)
+      valor_esperado = '0.0101'
+      self.assertEqual(valor_test, valor_esperado)
+
+    def test_decimal_binario_02(self):
+      valor_test = ch.decimal_binario(1/2)
+      valor_esperado = '0.1'
+      self.assertEqual(valor_test, valor_esperado)
+
+    def test_decimal_binario_03(self):
+      valor_test = ch.decimal_binario(1/3)
+      valor_esperado = '0.010101010101010101010101010101010101010101010101010101'
+      self.assertEqual(valor_test, valor_esperado)
+
+    def test_decimal_binario_04(self):
+      valor_test = ch.decimal_binario(1/5)
+      valor_esperado = '0.001100110011001100110011001100110011001100110011001101'
+      self.assertEqual(valor_test, valor_esperado)
+
+    def test_decimal_binario_05(self):
+      valor_test = ch.decimal_binario(1/7)
+      valor_esperado = '0.001001001001001001001001001001001001001001001001001001'
+      self.assertEqual(valor_test, valor_esperado)
+
+    def test_decimal_binario_06(self):
+      valor_test = ch.decimal_binario(1/9)
+      valor_esperado = '0.000111000111000111000111000111000111000111000111000111'
+      self.assertEqual(valor_test, valor_esperado)
+
+    def test_decimal_binario_07(self):
+      valor_test = ch.decimal_binario(12.125)
+      valor_esperado = '1100.001'
+      self.assertEqual(valor_test, valor_esperado)
+
 resultado_test = unittest.main(argv=[''], verbosity=2, exit=False)
 
 hc_tests = resultado_test.result.testsRun
