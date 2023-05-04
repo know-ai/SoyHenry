@@ -37,7 +37,7 @@ with open('Emisiones_CO2.csv', 'rb') as file:
     # Create dictionary
     emisiones = dict(zip(header, body))
 
-    # Print Resume
+    # RESULTS
     print("Resumen")
     print(f"Numero de Variables: {len(emisiones.keys())}")
     for key, value in emisiones.items():
@@ -46,12 +46,13 @@ with open('Emisiones_CO2.csv', 'rb') as file:
     
     anio_to_find = 2010
     region_to_find = 'América Latina y Caribe'
-    indexes = [i for i, x in enumerate(emisiones['Año']) if x == anio_to_find]
+    indexes = [i for i, x in enumerate(emisiones['Región']) if x == region_to_find]
+    total_co2_emissions = 0
     for index in indexes:
 
-        if emisiones['Región'][index]==region_to_find:
-
-            break
-    total_co2_emissions = emisiones['CO2 (kt)'][index]
+        if emisiones['Año'][index]==anio_to_find:
+            co2_emission = emisiones['CO2 (kt)'][index]
+            if co2_emission:
+                total_co2_emissions += emisiones['CO2 (kt)'][index]
 
     print(f"Emisiones Totales de CO2 (kt) para el Año {anio_to_find} en {region_to_find} fue de: {total_co2_emissions}")
