@@ -39,7 +39,7 @@ with open('Emisiones_CO2.csv', 'rb') as file:
 
     # Print Resume
     print("Resumen")
-    print(f"Numero de Variables: {element}")
+    print(f"Numero de Variables: {len(emisiones.keys())}")
     for key, value in emisiones.items():
 
         print(f"{key} tiene {value.count(None)} datos faltantes")
