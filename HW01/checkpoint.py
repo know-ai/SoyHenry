@@ -4,35 +4,29 @@ def numero_binario(numero:int):
     representación binaria. Debe recibir y devolver un valor de tipo entero.
     En caso de que el parámetro no sea de tipo entero y mayor a -1 retorna nulo.
     '''
-    binario = list()
-
-    def descomponer(numero:int):
-        """
-        Wrapper function to 
-        """
-        cociente, residuo = divmod(numero, 2)
-
-        binario.insert(0, str(residuo))
-
-        if cociente == 0:
-
-            return int("".join(binario))
-        
-        return descomponer(cociente)
-
     # Check Integer number
     if not isinstance(numero, int):
 
         return None
-    
-    else:
 
-        # Check Positive Number
-        if numero < 0:
+    # Check Positive Number
+    if numero < 0:
 
-            return None
+        return None
+
+    def descomponer(numero:int, binario:int=0, posicion:int=0):
+
+        cociente, residuo = divmod(numero, 2)
+        binario += residuo * 10 ** posicion
+        posicion += 1
+
+        if cociente == 0:
+
+            return binario
         
-        return descomponer(numero)
+        return descomponer(cociente, binario, posicion)
+    
+    return descomponer(numero)
     
 def binario_numero(binario:int):
     r"""
@@ -46,15 +40,13 @@ def binario_numero(binario:int):
 
         return None
     
-    else:
-        
-        binario = str(binario)
-        n = len(binario) - 1
-        for i, digito in enumerate(binario):
+    binario = str(binario)
+    n = len(binario) - 1
+    for i, digito in enumerate(binario):
 
-            numero += int(digito) * 2 ** (n-i)
-        
-        return numero
+        numero += int(digito) * 2 ** (n-i)
+    
+    return numero
     
 def decimal_binario(decimal:float):
     r"""
@@ -63,22 +55,19 @@ def decimal_binario(decimal:float):
     """
     _integer, decimal = divmod(decimal, 1)
     binario_integer = numero_binario(int(_integer))
-    binario_decimal = list()
 
-    def _decimal_binario(decimal:float):
-        
+    def _decimal_binario(decimal:float, binario_decimal:str=""):
+
         decimal *= 2
-
         _integer, decimal = divmod(decimal, 1)
-
-        binario_decimal.append(str(int(_integer)))
+        binario_decimal += str(int(_integer))
 
         if decimal == 0:
 
-            return "".join(binario_decimal)
+            return str(binario_integer) + "." + binario_decimal
         
-        return _decimal_binario(decimal)
+        return _decimal_binario(decimal, binario_decimal)
         
     binario_decimal = _decimal_binario(decimal)
 
-    return str(binario_integer) + "." + binario_decimal
+    return binario_decimal
