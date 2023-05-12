@@ -68,7 +68,3 @@ class Deck(list):
         points = 10 + card + 1
 
         return points
-
-
-
-
