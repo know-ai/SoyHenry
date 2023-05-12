@@ -2,6 +2,9 @@ from .player import Player, Crupier
 
 
 class Game:
+    r"""
+    Documentation here
+    """
 
     def __init__(self, goal_score:int=50, deck_size:int=20, card_to_player:int=3):
 
@@ -11,7 +14,9 @@ class Game:
         self.rounds = card_to_player
 
     def final_resume(self):
-
+        r"""
+        Documentation here
+        """
         player_points = self.player.get_points()
         
         if player_points > self.goal_score:
@@ -23,7 +28,9 @@ class Game:
         return f"Congrats!!! your score is: {score}"
 
     def play(self):
-
+        r"""
+        Documentation here
+        """
         self.crupier.deck.shuffle()
         for round in range(self.rounds):
 

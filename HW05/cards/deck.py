@@ -1,6 +1,9 @@
 from random import shuffle
 
 class Deck(list):
+    r"""
+    Documentation here
+    """
 
     def __init__(self, size:int=20):
 
@@ -14,7 +17,9 @@ class Deck(list):
 
     @size.setter
     def size(self, value:int):
-
+        r"""
+        Documentation here
+        """
         if isinstance(value, int):
 
             self._size = value
@@ -32,7 +37,9 @@ class Deck(list):
             raise ValueError(f"Size {value} value must be an integer")
     
     def pop(self, pos:int=-1)->int:
-
+        r"""
+        Documentation here
+        """
         if self.size > 0:
             
             value = super(Deck, self).pop(pos)
@@ -41,11 +48,15 @@ class Deck(list):
             return value
 
     def shuffle(self)->None:
-
+        r"""
+        Documentation here
+        """
         shuffle(self)
 
     def get_score(self, player_points:int, goal_score:int):
-
+        r"""
+        Documentation here
+        """
         card = -1
 
         while player_points <= goal_score:
